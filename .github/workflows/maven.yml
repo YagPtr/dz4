@@ -1,4 +1,4 @@
-name: DZ4 Test
+name: Run MTSBank tests
 
 on:
   push
@@ -6,14 +6,15 @@ on:
 jobs:
   run_tests:
     runs-on: ubuntu-latest
+
     steps:
 
-      - name : "first"
+      - name: "Использование ветки main репозитория"
         uses: actions/checkout@v3
-      - name : "second"
-        run: nvm clean test
+      - name: "Запуск тестов"
+        run: mvn clean test
         continue-on-error: true
-      - name : "third"
+      - name: "Генерация allure-report"
         uses: simple-elf/allure-report-action@master
         id: allure-report
         with:
@@ -21,10 +22,11 @@ jobs:
           gh_pages: gh-pages
           allure_report: target/allure-report
           allure_history: target/allure-history
-      - name : "forth"
+
+      - name: "Создание ветки gh-pages содержащей allure report"
         uses: peaceiris/actions-gh-pages@v3
         with:
-          deploy_key: ${{secrets.ACTIONS_DEPLOY_KEY}}
-          PERSONAL_TOKEN: $${{ secrets.GITHUB_TOKEN}}
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: target/allure-history
