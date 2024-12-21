@@ -1,4 +1,4 @@
-package api.registration;
+package api.answers;
 
 public class UnsuccessfullRegister {
     private String error;

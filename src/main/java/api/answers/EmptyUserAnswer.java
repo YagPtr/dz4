@@ -1,4 +1,4 @@
-package api.users.empty;
+package api.answers;
 
 public class EmptyUserAnswer {
     String updatedAt;
