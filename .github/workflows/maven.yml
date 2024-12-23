@@ -2,8 +2,8 @@ name: DZ4
 
 on:
   schedule:
-    # Запускать каждый день в полночь UTC
-    - cron: '11 10 * * *'
+    #время по UTC
+    - cron: '14 13 * * *'
 
 jobs:
   run_tests:
