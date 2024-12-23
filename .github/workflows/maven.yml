@@ -3,7 +3,7 @@ name: DZ4
 on:
   schedule:
     #время по UTC
-    - cron: '20 * * * *'
+    - cron: '*/15 * * * *'
 
 jobs:
   run_tests:
