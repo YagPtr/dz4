@@ -110,12 +110,13 @@ public class RestTest {
     @Step
     public void testDeletePositive() {
         Specification.ResponceCheck(Specification.requestSpecification(URL), Specification.responseSpecification(204));
-        given()
+        String answer=given()
                 .when()
                 .delete("/api/users/2")
                 .then()
                 .log()
-                .all();
+                .all().extract().response().getBody().asString();
+        Assertions.assertEquals("",answer);
     }
 
     /**
@@ -125,12 +126,13 @@ public class RestTest {
     @Step
     public void testDeleteNegative() {
         Specification.ResponceCheck(Specification.requestSpecification(URL), Specification.responseSpecification(204));
-        given()
+        String answer=given()
                 .when()
                 .delete("/api/users/23")
                 .then()
                 .log()
-                .all();
+                .all().extract().response().getBody().asString();
+        Assertions.assertEquals("",answer);
     }
 
     /**
@@ -172,11 +174,12 @@ public class RestTest {
     @Step
     public void testGetNegative() {
         Specification.ResponceCheck(Specification.requestSpecification(URL), Specification.responseSpecification(404));
-        given()
+        String answer=given()
                 .when()
                 .get("/api/users/23")
                 .then()
                 .log()
-                .all();
+                .all().extract().response().getBody().asString();
+        Assertions.assertEquals("{}",answer);
     }
 }
