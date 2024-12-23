@@ -1,7 +1,9 @@
 name: DZ4
 
 on:
-  - cron: '19 * * * *'
+  schedule:
+    #время по UTC
+    - cron: '20 * * * *'
 
 jobs:
   run_tests:
